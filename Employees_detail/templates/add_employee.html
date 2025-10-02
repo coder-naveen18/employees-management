@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% load static %}
+{% load static tailwind_tags %}
+{% tailwind_css %}
+
+
+{% block content %}
+
+    {% block home %}
+        <div class= "container pt-5">
+            <div class= "card pt-4">
+                <div class= "pt-2 text-center">
+                    <h2>
+        
+                        Add Employee Detail
+                        
+                    </h2>
+                </div>
+
+                <div class="container pt-2 ">
+                    <form method = "post" enctype = 'multipart/form-data'>
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button class = "btn btn-warning" type="submit" style= "width: 1270px; height:40px;">Submit</button>
+                    </form>
+                    <br>
+                    
+                </div>
+                <div style="margin-left: 13px;">
+                    <a href="{% url 'employees_detail' %}" class="btn btn-primary " style= "width: 1270px; height: 40px">Go To Employees List</a>
+                </div>
+                <br>
+            </div>
+        </div>
+        
+
+    {% endblock  %}
+
+
+{% endblock  %}
