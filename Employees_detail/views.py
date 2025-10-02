@@ -34,3 +34,17 @@ def employee_delete(request, emp_id):
         return redirect('employees_detail')
     return render(request, 'employee_confirm_delete.html', {'employee': employee})
 
+def edit_employee(request, emp_id):
+    employee = get_object_or_404(Employees_detail, pk = emp_id)
+    if request.method == 'POST':
+         form = Add_Employee_form(request.POST , request.FILES, instance=employee)
+         if form.is_valid():
+             form.save()
+             return redirect('employees_detail')
+
+    else :
+        form = Add_Employee_form(instance=employee)
+    return render(request, 'add_employee.html', {'form': form})
+
+
+
